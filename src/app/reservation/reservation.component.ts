@@ -49,10 +49,10 @@ export class ReservationComponent implements OnInit {
       this.isError = true;
     } else {
       this._snackBar.open(
-        'Reservation Done , happy dining ' + resForm.value.name + ' 🍕',
+        `Reservation Done 🍕 , Thank you ${resForm.value.name} !`,
         '',
         {
-          duration: 2000,
+          duration: 2500,
         }
       );
       this.resetReservationForm(resForm);
