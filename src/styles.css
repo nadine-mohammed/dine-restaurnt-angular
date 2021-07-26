@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@300;400;600;700&display=swap');
+:root {
+    --beaver: #9e7f66;
+    --cod-gray: #111111;
+    --mirage: #17192b;
+    --ebony-clay: #242b37;
+    --shuttle-gray: #5c6779;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /*  */
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-width: 100%;
+    height: 100%;
+    font-family: Spartan;
+}

@@ -1,0 +1,132 @@
+<div class="reservation">
+  <button class="back-btn" (click)="onBackHomePage()">Back</button>
+  <div class="reservation-details">
+    <h1 class="dine">dine</h1>
+    <h1 class="reservation-title">Reservations</h1>
+    <p class="reservation-desc">
+      We can’t wait to host you. If you have any special requirements please
+      feel free to call on the phone number below. We’ll be happy to accommodate
+      you.
+    </p>
+  </div>
+  <div class="reservation-form">
+    <form
+      #resForm="ngForm"
+      (ngSubmit)="onSubmit(resForm, $event)"
+      class="reservation-form-details"
+    >
+      <!-- name -->
+      <div class="name-block">
+        <input
+          type="text"
+          placeholder="Name"
+          class="name"
+          name="name"
+          ngModel
+          #name="ngModel"
+          required
+          autocomplete="off"
+        />
+        <div class="error" *ngIf="(name.touched || isError) && !name.valid">
+          <h5 *ngIf="name.errors.required">This field is required</h5>
+        </div>
+      </div>
+      <!--  -->
+      <!-- email -->
+      <div class="email-block">
+        <input
+          type="email"
+          placeholder="Email"
+          class="email"
+          name="email"
+          ngModel
+          #email="ngModel"
+          required
+          email
+          autocomplete="off"
+        />
+        <div class="error" *ngIf="(email.touched || isError) && !email.valid">
+          <h5 *ngIf="email.errors.required; else wrongFormat">
+            This field is required
+          </h5>
+          <ng-template #wrongFormat
+            ><h5>Please use a valid email address</h5></ng-template
+          >
+        </div>
+      </div>
+      <!--  -->
+      <!-- date & time -->
+      <div class="date-time-block">
+        <mat-form-field>
+          <input
+            matInput
+            [ngxMatDatetimePicker]="picker"
+            placeholder="Select Date and Time"
+            [min]="today"
+            ngModel
+            name="reservationTime"
+            #reservationTime="ngModel"
+            required
+            class="dateTime"
+            autocomplete="off"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker
+            #picker
+            [enableMeridian]="true"
+          ></ngx-mat-datetime-picker>
+        </mat-form-field>
+      </div>
+      <!--  -->
+      <!-- person -->
+      <div class="people-block">
+        <!-- numbe of people -->
+        <input
+          type="text"
+          name="countPeople"
+          [(ngModel)]="count_people_str"
+          #countPeople="ngModel"
+          class="countPeople"
+          autocomplete="off"
+        />
+        <!-- buttons increase/decrease -->
+        <div class="btn-inc-dec">
+          <button
+            mat-icon-button
+            color="primary"
+            type="button"
+            (click)="onIncrease()"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="primary"
+            type="button"
+            (click)="onDecrease()"
+          >
+            <mat-icon>remove</mat-icon>
+          </button>
+          <!--  -->
+        </div>
+      </div>
+      <!--  -->
+
+      <button class="reservation-btn" type="submit">make reservation</button>
+    </form>
+  </div>
+</div>
+<div class="white-section">
+  <img
+    src="../../assets/images/patterns/pattern-curve-bottom-right.svg"
+    alt="pattern-bottom-right"
+  />
+  <img
+    src="../../assets/images/patterns/pattern-lines.svg"
+    alt="lines"
+    class="lines"
+  />
+</div>
